@@ -180,6 +180,25 @@ services:
       - ./mosquitto:/mosquitto/config
     networks:
       - bananaflix-backend
+  prometheus:
+    image: prom/prometheus
+    restart: always
+    ports:
+      - '9090:9090'
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      - bananaflix-backend
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: always
+    ports:
+      - '3001:3000'
+    networks:
+      - bananaflix-backend
 
 volumes:
   postgres_data:
