@@ -2,9 +2,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "bananaflix.fullname" . }}
+  name: {{ include "bananaflix-chart.fullname" . }}
   labels:
-    {{- include "bananaflix.labels" . | nindent 4 }}
+    {{- include "bananaflix-chart.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -35,7 +35,7 @@ spec:
             {{- end }}
             backend:
               service:
-                name: {{ include "bananaflix.fullname" $ }}
+                name: {{ include "bananaflix-chart.fullname" $ }}
                 port:
                   number: {{ $.Values.service.port }}
           {{- end }}

@@ -138,7 +138,7 @@ async def get_global_stats():
 
 register_tortoise(
     app,
-    db_url="postgres://banana:banana@bananaflix-db:5432/banana-db", # Remplacez par postgres://banana:banana@localhost:5432/banana-db si vous ne dockerisez pas upload et video-convert les gars
+    db_url="postgres://banana:banana@bananaflix-chart-db:5432/banana-db", # Remplacez par postgres://banana:banana@localhost:5432/banana-db si vous ne dockerisez pas upload et video-convert les gars
     modules={"models": ["common.models"]},
     generate_schemas=False,
     add_exception_handlers=True
