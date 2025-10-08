@@ -1,0 +1,2 @@
+from .bookmark_repository import BookMarkRepository
+from .bookmark_category_repository import BookmarkCategoryRepository

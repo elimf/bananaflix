@@ -1,0 +1,125 @@
+:root {
+  --primary: #141414;
+  --light: #F3F3F3;
+  --dark: 	#686868;
+}
+body, html, #root, .app {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #000;
+  color: #fff;
+  height: 100%;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+}
+
+button {
+  background-color: #FFD700;
+  color: #000;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background-color: #FFC107;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #FFD700;
+  border: 2px solid #FFD700;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background-color: #FFD700;
+  color: #000;
+}
+
+/* Main content */
+.main-content {
+  padding: 50px;
+}
+
+header {
+  padding: 20px 20px 0 20px;
+  position: fixed;
+  top: 0;
+    z-index: 10;
+  display: grid;
+  grid-gap:5px;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-areas:
+   "nt mn mn sb . . . ";
+  background-color: #141414;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.netflixLogo {
+  grid-area: nt;
+  object-fit: cover;
+  width: 100px;
+  max-height: 100%;
+
+  padding-left: 30px;
+  padding-top: 0px;
+}
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #FFD700;
+  text-decoration: none;
+}
+
+.netflixLogo img {
+  height: 35px;
+}
+
+#logo {
+    font-size: 1.8rem;
+  font-weight: bold;
+  color: #FFD700;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav {
+  grid-area: mn;
+  padding: 0 30px 0 20px;
+}
+
+.main-nav a {
+  color: var(--light);
+  text-decoration: none;
+  margin: 5px;
+}
+
+.main-nav a:hover {
+  color: var(--dark);
+}
+
+.sub-nav {
+  grid-area: sb;
+  padding: 0 40px 0 40px;
+}
+
+.sub-nav a {
+  color: var(--light);
+  text-decoration: none;
+  margin: 5px;
+}
+
+.sub-nav a:hover {
+  color: var(--dark);
+}

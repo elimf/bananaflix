@@ -1,0 +1,176 @@
+services:
+  bananaflix-db:
+    image: postgres:16
+    container_name: bananaflix-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: banana
+      POSTGRES_PASSWORD: banana
+      POSTGRES_DB: banana-db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - bananaflix-backend
+
+  main-service:
+    build:
+      context: ./main
+      dockerfile: Dockerfile
+    container_name: main-service
+    ports:
+      - "8000:8000"
+    environment:
+      MQTT_HOST: mqtt
+      MQTT_PORT: 1883
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - bananaflix-db
+    volumes:
+      - ./common:/app/common
+      - ./main:/app
+    restart: unless-stopped
+    networks:
+      - bananaflix-backend
+
+  bookmarks:
+    build:
+      context: ./bookmarks
+      dockerfile: Dockerfile
+    container_name: bookmarks
+    ports:
+      - "8003:8003"
+    depends_on:
+      - bananaflix-db
+      - main-service
+    volumes:
+      - ./common:/app/common
+      - ./bookmarks:/app
+    restart: unless-stopped
+    networks:
+      - bananaflix-backend
+
+  upload-service:
+    build:
+      context: ./upload
+      dockerfile: Dockerfile
+    container_name: upload-service
+    ports:
+      - "8006:8006"
+    depends_on:
+      - bananaflix-db
+      - main-service
+    volumes:
+      - ./common:/app/common
+      - ./upload:/app
+    restart: unless-stopped
+    networks:
+      - bananaflix-backend
+
+  video-convert-service:
+    build:
+      context: ./video-convert
+      dockerfile: Dockerfile
+    container_name: video-convert-service
+    ports:
+      - "8002:8002"
+    depends_on:
+      - bananaflix-db
+      - main-service
+    volumes:
+      - ./common:/app/common
+      - ./video-convert:/app
+      - shared_storage:/app/storage
+    restart: unless-stopped
+    networks:
+      - bananaflix-backend
+
+  video-player:
+    build:
+      context: ./video-player
+      dockerfile: Dockerfile
+    container_name: video-player
+    ports:
+      - "8004:8004"
+    depends_on:
+      - bananaflix-db
+      - main-service
+      - mqtt
+      - stats
+    volumes:
+      - ./common:/app/common
+      - ./video-player:/app
+      - shared_storage:/app/storage
+    restart: unless-stopped
+    networks:
+      - bananaflix-backend
+
+  stats:
+    build:
+      context: ./stats
+      dockerfile: Dockerfile
+    container_name: stats
+    ports:
+      - "8001:8001"
+    environment:
+      MQTT_HOST: mqtt
+      MQTT_PORT: 1883
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - bananaflix-db
+      - redis
+      - mqtt
+      - main-service
+    volumes:
+      - ./common:/app/common
+      - ./stats:/app
+    networks:
+      - bananaflix-backend
+
+  search:
+    build:
+      context: ./search
+      dockerfile: Dockerfile
+    container_name: search
+    ports:
+      - "8005:8005"
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+    depends_on:
+      - redis
+      - main-service
+      - bananaflix-db
+    volumes:
+      - ./common:/app/common
+      - ./search:/app
+    networks:
+      - bananaflix-backend
+  redis:
+    image: redis:8
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - bananaflix-backend
+
+  mqtt:
+    image: eclipse-mosquitto:2
+    container_name: mqtt
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./mosquitto:/mosquitto/config
+    networks:
+      - bananaflix-backend
+
+volumes:
+  postgres_data:
+  shared_storage:
+
+networks:
+  bananaflix-backend:
+    driver: bridge

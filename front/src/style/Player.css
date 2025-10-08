@@ -1,0 +1,118 @@
+.player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: linear-gradient(135deg, #1e1e2f, #121220);
+  min-height: 100vh;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+}
+
+.player-title {
+  margin-bottom: 20px;
+  font-size: 2.2rem;
+  font-weight: 600;
+  text-align: center;
+  color: #ffd700;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 60vh;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background-color: #000;
+}
+
+.video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.video-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #ffd700;
+  font-weight: 500;
+}
+
+.quality-selector {
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+  background: #2a2a40;
+  padding: 10px 20px;
+  border-radius: 10px;
+  flex-wrap: wrap;
+}
+
+.quality-option {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.quality-option input[type="radio"] {
+  accent-color: #ffd700;
+  cursor: pointer;
+}
+
+.quality-option:hover {
+  color: #ffd700;
+  transform: scale(1.05);
+}
+
+.video-info, .video-stats {
+  margin-top: 30px;
+  padding: 20px;
+  background: #2a2a40;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 800px;
+  color: #fff;
+}
+
+.video-info h2,
+.video-stats h2 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+  color: #ffd700;
+}
+
+.video-info p {
+  margin: 6px 0;
+  font-size: 1rem;
+}
+
+.video-stats ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.video-stats li {
+  margin: 6px 0;
+  font-size: 1rem;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
