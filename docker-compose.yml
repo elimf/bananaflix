@@ -1,4 +1,18 @@
 services:
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    container_name: front
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+    restart: unless-stopped
+    networks:
+      - bananaflix-backend
+
   bananaflix-db:
     image: postgres:16
     container_name: bananaflix-db
