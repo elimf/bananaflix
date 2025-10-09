@@ -18,7 +18,7 @@ spec:
       - name: bookmarks-service
         image: safouuuuu/bookmarks-service:main
         ports:
-        - containerPort: {{ .Values.service.targetPort }}
+        - containerPort: {{ .Values.service.port }}
         resources:
           limits:
             cpu: {{ .Values.resources.limits.cpu }}

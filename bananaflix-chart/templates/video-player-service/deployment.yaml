@@ -18,7 +18,7 @@ spec:
       - name: video-player-service
         image: safouuuuu/video-player-service:main
         ports:
-        - containerPort: {{ .Values.service.targetPort }}
+        - containerPort: {{ .Values.service.port }}
         resources:
           limits:
             cpu: {{ .Values.resources.limits.cpu }}

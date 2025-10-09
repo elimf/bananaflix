@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "bananaflix-chart.fullname" . }}-test-connection"
+  name: "{{ include "bananaflix.fullname" . }}-test-connection"
   labels:
-    {{- include "bananaflix-chart.labels" . | nindent 4 }}
+    {{- include "bananaflix.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test
 spec:
@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "bananaflix-chart.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "bananaflix.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never

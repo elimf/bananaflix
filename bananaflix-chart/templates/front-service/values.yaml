@@ -6,6 +6,7 @@ image:
 service:
   type: ClusterIP
   port: 5173
+  targetPort: 5173
 resources:
   limits:
     cpu: "100m"

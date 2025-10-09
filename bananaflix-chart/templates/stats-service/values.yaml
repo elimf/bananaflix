@@ -6,6 +6,7 @@ image:
 service:
   type: ClusterIP
   port: 8001
+  targetPort: 8001
 resources:
   limits:
     cpu: "180m"

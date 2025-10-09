@@ -18,7 +18,7 @@ spec:
       - name: bananaflix-db-service
         image: safouuuuu/bananaflix-db-service:main
         ports:
-        - containerPort: {{ .Values.service.targetPort }}
+        - containerPort: {{ .Values.service.port }}
         resources:
           limits:
             cpu: {{ .Values.resources.limits.cpu }}

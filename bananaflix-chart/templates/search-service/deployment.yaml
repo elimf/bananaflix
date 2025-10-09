@@ -18,7 +18,7 @@ spec:
       - name: search-service
         image: safouuuuu/search-service:main
         ports:
-        - containerPort: {{ .Values.service.targetPort }}
+        - containerPort: {{ .Values.service.port }}
         resources:
           limits:
             cpu: {{ .Values.resources.limits.cpu }}
