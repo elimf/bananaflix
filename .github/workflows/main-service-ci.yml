@@ -11,9 +11,10 @@ on:
 
 env:
   MAIN_IMAGE_NAME: main-service
+  DOCKER_PRIVATE_REGISTRY: bananaflix
 
 jobs:
-  build-and-push:
+  build-and-push-main:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -34,4 +35,4 @@ jobs:
           context: ./main
           file: ./main/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.MAIN_IMAGE_NAME }}:${{ github.ref_name }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_PRIVATE_REGISTRY }}:${{ env.MAIN_IMAGE_NAME }}-${{ github.ref_name }}
