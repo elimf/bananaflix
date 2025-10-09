@@ -8,7 +8,7 @@ service:
   port: 8005
 resources:
   limits:
-    cpu: "150m"
+    cpu: "140m"
     memory: "512Mi"
   requests:
     cpu: "120m"

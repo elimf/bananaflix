@@ -8,7 +8,7 @@ service:
   port: 8000
 resources:
   limits:
-    cpu: "400m"
+    cpu: "390m"
     memory: "512Mi"
   requests:
     cpu: "330m"
