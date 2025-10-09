@@ -14,7 +14,7 @@ env:
   DOCKER_PRIVATE_REGISTRY: bananaflix
 
 jobs:
-  build-and-push-main:
+  build-and-push-upload:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
