@@ -1,4 +1,4 @@
-name: Build and Push Front Service Image
+name: Build and Push Upload Service Image
 
 on:
   push:
@@ -6,15 +6,15 @@ on:
       - main
       - dev
     paths:
-      - 'front/**'
+      - 'upload/**'
       - '.github/**'
 
 env:
-  FRONT_IMAGE_NAME: front-service
+  UPLOAD_IMAGE_NAME: upload-service
   DOCKER_PRIVATE_REGISTRY: bananaflix
 
 jobs:
-  build-and-push-front:
+  build-and-push-main:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -32,7 +32,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
-          context: ./front
-          file: ./front/Dockerfile
+          context: ./upload
+          file: ./upload/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_PRIVATE_REGISTRY }}:${{ env.FRONT_IMAGE_NAME }}-${{ github.ref_name }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.DOCKER_PRIVATE_REGISTRY }}:${{ env.UPLOAD_IMAGE_NAME }}-${{ github.ref_name }}
