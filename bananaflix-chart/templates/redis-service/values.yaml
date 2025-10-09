@@ -8,10 +8,10 @@ service:
   port: 6379
 resources:
   limits:
-    cpu: "500m"
+    cpu: "120m"
     memory: "512Mi"
   requests:
-    cpu: "250m"
+    cpu: "90m"
     memory: "256Mi"
 ingress:
   enabled: false

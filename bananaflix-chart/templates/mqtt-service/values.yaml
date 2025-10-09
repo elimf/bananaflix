@@ -8,10 +8,10 @@ service:
   port: 1883
 resources:
   limits:
-    cpu: "500m"
+    cpu: "60m"
     memory: "512Mi"
   requests:
-    cpu: "250m"
+    cpu: "40m"
     memory: "256Mi"
 ingress:
   enabled: false

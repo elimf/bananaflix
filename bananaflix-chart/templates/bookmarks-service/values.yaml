@@ -8,10 +8,10 @@ service:
   port: 8003
 resources:
   limits:
-    cpu: "500m"
+    cpu: "120m"
     memory: "512Mi"
   requests:
-    cpu: "250m"
+    cpu: "80m"
     memory: "256Mi"
 ingress:
   enabled: false
