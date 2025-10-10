@@ -65,7 +65,7 @@ async def suggestions():
 
 register_tortoise(
     app,
-    db_url="postgres://banana:banana@bananaflix-chart-db:5432/banana-db",
+    db_url="postgres://banana:banana@bananaflix-db:5432/banana-db",
     modules={"models": ["common.models"]},
     generate_schemas=False,
     add_exception_handlers=True,
