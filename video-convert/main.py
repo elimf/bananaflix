@@ -15,7 +15,7 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await Tortoise.init(
-        db_url="postgres://banana:banana@bananaflix-db:5432/banana-db",
+        db_url="postgres://banana:banana@bananaflix-chart-db:5432/banana-db",
         modules={"models": ["common.models"]}
     )
     await Tortoise.generate_schemas()

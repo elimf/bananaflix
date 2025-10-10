@@ -1,0 +1,89 @@
+services:
+  front-service:
+    image:
+      repository: safouuuuu/bananaflix
+      env: dev
+    service:
+      type: ClusterIP
+      port: 5173
+
+  main-service:
+    image:
+      repository: safouuuuu/bananaflix
+      env: dev
+    service:
+      type: ClusterIP
+      port: 8000
+
+  upload-service:
+    image:
+      repository: safouuuuu/bananaflix
+      env: dev
+    service:
+      type: ClusterIP
+      port: 8006
+
+  video-convert-service:
+    image:
+      repository: safouuuuu/bananaflix
+      env: dev
+    service:
+      type: ClusterIP
+      port: 8002
+
+  stats-service:
+    image:
+      repository: safouuuuu/bananaflix
+      env: dev
+    service:
+      type: ClusterIP
+      port: 8001
+
+  search-service:
+    image:
+      repository: safouuuuu/bananaflix
+      env: dev
+    service:
+      type: ClusterIP
+      port: 8005
+
+  video-player-service:
+    image:
+      repository: safouuuuu/bananaflix
+      env: dev
+    service:
+      type: ClusterIP
+      port: 8004
+
+  bookmarks-service:
+    image:
+      repository: safouuuuu/bananaflix
+      env: dev
+    service:
+      type: ClusterIP
+      port: 8003
+
+ingress:
+  enabled: true
+  className: nginx
+  host: bananaflix.dev
+  frontService: front-service
+  frontPort: 5173
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  tls: false
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 256Mi
+
+httpRoute:
+  enabled: false
+  hostnames: []
+  parentRefs: []
+  rules: []
+  annotations: {}

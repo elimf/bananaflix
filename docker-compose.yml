@@ -15,7 +15,7 @@ services:
 
   bananaflix-db:
     image: postgres:16
-    container_name: bananaflix-db
+    container_name: bananaflix-chart-db
     restart: unless-stopped
     environment:
       POSTGRES_USER: banana
