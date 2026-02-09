@@ -1,7 +1,3 @@
-Parfait ! Voici le README mis à jour avec la section **Authors** à la place de **Contribution** :
-
----
-
 # Bananaflix 🎬
 
 **Bananaflix** est une plateforme de streaming vidéo moderne conçue pour gérer, rechercher et visionner facilement des vidéos. Elle combine une interface intuitive, un moteur de recherche puissant, et une architecture backend robuste pour offrir une expérience utilisateur fluide et réactive.
